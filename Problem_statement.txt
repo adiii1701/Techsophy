@@ -1,0 +1,17 @@
+Personalized Health Risk Assessment Tool
+
+Problem: Build a system that analyzes lifestyle factors, family history, and biometrics to predict future health risks and suggest preventive measures.
+
+Skills Demonstrated:
+
+AI/ML: Implement risk scoring models using decision trees or logistic regression for diabetes, heart disease, obesity risk
+
+Critical Thinking: Weight different risk factors appropriately, understand population vs individual risk, consider intervention effectiveness
+
+Problem Solving: Handle missing health data, conflicting risk factors, age-specific calculations
+
+Modular Structure: Separate risk calculation engines for different conditions, lifestyle assessment, and recommendation modules
+
+Clear Architecture: Flow from health inputs → risk calculation → prevention recommendations → action plan
+
+Deliverable: Risk assessment tool that provides personalized prevention strategies with priority rankings.
