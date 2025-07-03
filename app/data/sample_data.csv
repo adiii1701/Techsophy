@@ -1,0 +1,5 @@
+age,gender,height_cm,weight_kg,bmi,smoker,family_diabetes,exercise_frequency,diet_quality
+35,M,175,75,24.49,False,False,3-5x/week,good
+45,F,165,80,29.38,True,True,1-2x/week,fair
+28,M,180,85,26.23,False,False,3-5x/week,good
+52,F,160,90,35.16,True,True,none,poor

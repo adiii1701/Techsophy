@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="results-container">
+    <h2>Your Health Assessment Results</h2>
+    
+    <div class="risk-results">
+        {% for condition, result in risks.items() %}
+            {% if condition != 'timestamp' %}
+            <div class="risk-card {{ result.risk_category|lower }}-risk">
+                <h3>{{ condition.replace('_', ' ')|title }}</h3>
+                <p>Risk Level: <strong>{{ result.risk_category }}</strong> ({{ result.risk_percent }}%)</p>
+                {% if result.current_status %}
+                <p>Current Status: <strong>{{ result.current_status }}</strong></p>
+                {% endif %}
+                {% if result.bmi %}
+                <p>BMI: {{ result.bmi }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <div class="recommendations">
+        <h3>Personalized Recommendations</h3>
+        
+        {% for rec in recommendations %}
+        <div class="recommendation {{ rec.priority|lower }}-priority">
+            <h4>{{ rec.category }}</h4>
+            <p>{{ rec.recommendation }}</p>
+            {% if rec.resources %}
+            <p>Resources:</p>
+            <ul class="resources">
+                {% for resource in rec.resources %}
+                <li>{{ resource }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="action-plan">
+        <h3>Your Action Plan</h3>
+        
+        <h4>Short-term Goals (1-2 weeks):</h4>
+        <ul>
+            {% for goal in action_plan.short_term_goals %}
+            <li>
+                <strong>{{ goal.goal }}</strong><br>
+                Resources: {{ goal.resources|join(', ') }}
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <h4>Long-term Goals (3-6 months):</h4>
+        <ul>
+            {% for goal in action_plan.long_term_goals %}
+            <li>
+                <strong>{{ goal.goal }}</strong><br>
+                Resources: {{ goal.resources|join(', ') }}
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <h4>Follow-up Schedule:</h4>
+        <ul>
+            {% for item in action_plan.follow_up_schedule %}
+            <li>
+                <strong>{{ item.action }}</strong> - {{ item.timeline }}<br>
+                Purpose: {{ item.purpose }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
